@@ -26,13 +26,16 @@ public class LojaTest {
         gabriel = new Usuario("Gabriel", "Gab");
         felipe = new Usuario("Felipe", "Fe");
         jogos = new ArrayList<>();
+        jogos.add(mortal);
+        jogos.add(fifa);
+        jogos.add(pes);
+        loja = new Loja(gabriel, jogos);
 
 
     }
 
     @Test
     void constroi(){
-        loja = new Loja(gabriel, jogos);
         assertEquals(gabriel, loja.getDono());
         assertEquals(0, loja.numeroAvaliados(loja.getDono()));
     }
@@ -40,11 +43,6 @@ public class LojaTest {
     @Test
     void umUsuarioAvaliaUmJogo(){
         mortal.avalia(gabriel.getApelido(), 10);
-        jogos.add(mortal);
-        jogos.add(fifa);
-        jogos.add(pes);
-        loja = new Loja(gabriel, jogos);
-
         assertEquals(1, loja.numeroAvaliados(loja.getDono()));
     }
 
@@ -52,11 +50,6 @@ public class LojaTest {
     void umUsuarioAvaliaDoisJogos(){
         mortal.avalia(gabriel.getApelido(), 10);
         fifa.avalia(gabriel.getApelido(), 10);
-
-        jogos.add(mortal);
-        jogos.add(fifa);
-        jogos.add(pes);
-        loja = new Loja(gabriel, jogos);
 
         assertEquals(2, loja.numeroAvaliados(loja.getDono()));
     }
@@ -66,22 +59,14 @@ public class LojaTest {
         mortal.avalia(gabriel.getApelido(), 10);
         mortal.avalia(felipe.getApelido(), 10);
 
-        jogos.add(mortal);
-        jogos.add(fifa);
-        jogos.add(pes);
-        loja = new Loja(gabriel, jogos);
         assertEquals(1, loja.numeroAvaliados(loja.getDono()));
         assertEquals(1, loja.numeroAvaliados(felipe));
     }
     @Test
-    void doisUsuariosAvaliamDoisJogo(){
+    void doisUsuariosAvaliamDoisJogos(){
         mortal.avalia(gabriel.getApelido(), 10);
         fifa.avalia(felipe.getApelido(), 10);
 
-        jogos.add(mortal);
-        jogos.add(fifa);
-        jogos.add(pes);
-        loja = new Loja(gabriel, jogos);
         assertEquals(1, loja.numeroAvaliados(loja.getDono()));
         assertEquals(1, loja.numeroAvaliados(felipe));
     }

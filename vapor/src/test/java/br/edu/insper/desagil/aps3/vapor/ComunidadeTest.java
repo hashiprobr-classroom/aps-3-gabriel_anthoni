@@ -30,17 +30,19 @@ public class ComunidadeTest {
 
     @Test
     void adicionaUmMembro(){
-        usuarios.add(gabriel);
+
         List<String> apelidosMembros = List.of(gabriel.getApelido());
         comunidade = new Comunidade(usuarios);
+        comunidade.adicionaMembro(gabriel);
         assertEquals(apelidosMembros, comunidade.apelidosMembros());
     }
     @Test
-    void adicionaDoisMembro(){
-        usuarios.add(gabriel);
-        usuarios.add(anthoni);
+    void adicionaDoisMembros(){
         List<String> apelidosMembros = List.of(gabriel.getApelido(), anthoni.getApelido());
         comunidade = new Comunidade(usuarios);
+        comunidade.adicionaMembro(gabriel);
+        comunidade.adicionaMembro(anthoni);
+
         assertEquals(apelidosMembros, comunidade.apelidosMembros());
     }
 

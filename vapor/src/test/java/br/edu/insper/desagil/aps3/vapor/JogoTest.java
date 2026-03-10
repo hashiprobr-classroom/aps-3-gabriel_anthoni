@@ -8,17 +8,17 @@ import static org.junit.jupiter.api.Assertions.*;
 public class JogoTest {
     private static final double DELTA = 0.01;
     private Jogo jogo;
-    private Usuario Marcio;
-    private Usuario Anthoni;
-    private Usuario Gabriel;
+    private Usuario marcio;
+    private Usuario anthoni;
+    private Usuario gabriel;
 
 
     @BeforeEach
     public void setUp(){
         jogo = new Jogo(0,"Palmeiras");
-        Marcio = new Usuario("Marcio", "mar");
-        Anthoni = new Usuario("Anthoni", "ant");
-        Gabriel = new Usuario("Gabriel", "gab");
+        marcio = new Usuario("Marcio", "mar");
+        anthoni = new Usuario("Anthoni", "ant");
+        gabriel = new Usuario("Gabriel", "gab");
     }
 
     @Test
@@ -30,26 +30,26 @@ public class JogoTest {
 
     @Test
     void avaliaUmaVez(){
-        jogo.avalia(Marcio.getApelido(), 3);
-        assertTrue(jogo.avaliado(Marcio.getApelido()));
-        assertFalse(jogo.avaliado(Gabriel.getApelido()));
+        jogo.avalia(marcio.getApelido(), 3);
+        assertTrue(jogo.avaliado(marcio.getApelido()));
+        assertFalse(jogo.avaliado(gabriel.getApelido()));
         assertEquals(3, jogo.media(), DELTA);
     }
 
     @Test
     void avaliaDuasVezes(){
-        jogo.avalia(Marcio.getApelido(), 3);
-        jogo.avalia(Anthoni.getApelido(), 4);
-        assertTrue(jogo.avaliado(Marcio.getApelido()));
-        assertTrue(jogo.avaliado(Anthoni.getApelido()));
+        jogo.avalia(marcio.getApelido(), 3);
+        jogo.avalia(anthoni.getApelido(), 4);
+        assertTrue(jogo.avaliado(marcio.getApelido()));
+        assertTrue(jogo.avaliado(anthoni.getApelido()));
         assertEquals(3.5, jogo.media(), DELTA);
     }
 
     @Test
     void avaliaTresVezes(){
-        jogo.avalia(Marcio.getApelido(), 3);
-        jogo.avalia(Anthoni.getApelido(), 4);
-        jogo.avalia(Marcio.getApelido(), 5);
+        jogo.avalia(marcio.getApelido(), 3);
+        jogo.avalia(anthoni.getApelido(), 4);
+        jogo.avalia(marcio.getApelido(), 5);
         assertEquals(4.5, jogo.media(), DELTA);
     }
 }
