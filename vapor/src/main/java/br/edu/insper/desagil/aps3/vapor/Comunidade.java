@@ -13,6 +13,7 @@ public class Comunidade {
     public void adicionaMembro(Usuario membro){
         membros.add(membro);
     }
+
     public List<String> apelidosMembros(){
         List<String> apelidos = new ArrayList<>();
         for(Usuario membro:membros){
